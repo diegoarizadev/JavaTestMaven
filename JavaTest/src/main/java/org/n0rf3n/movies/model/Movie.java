@@ -41,7 +41,7 @@ public class Movie {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return id == movie.id &&
+        return id.equals(movie.id) &&
                 minutes == movie.minutes &&
                 name.equals(movie.name) &&
                 genre == movie.genre;
