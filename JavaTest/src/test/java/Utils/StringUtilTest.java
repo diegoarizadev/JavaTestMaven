@@ -33,4 +33,34 @@ public class StringUtilTest {
         Assert.assertEquals("", StringUtil.repeat("Hola", -1));
 
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void string_is_empty(){
+        Assert.assertTrue(StringUtil.isEmpty(""));
+    }
+
+    @Test
+    public void string_is_not_empty(){
+        Assert.assertFalse(StringUtil.isEmpty("hola"));
+
+    }
+
+    @Test
+    public void string_clean_is_not_empty(){
+        Assert.assertTrue(StringUtil.isEmpty(" "));
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void string_null_is_not_empty(){
+        String s = null;
+        Assert.assertTrue(StringUtil.isEmpty(s));
+
+    }
+
+    @Test
+    public void string_spaces_is_empty(){
+        Assert.assertTrue(StringUtil.isEmpty("null hola"));
+
+    }
 }

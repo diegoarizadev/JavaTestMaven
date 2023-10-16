@@ -17,4 +17,23 @@ public class StringUtil {
 
         return result.toString();
     }
+
+
+    public static boolean isEmpty(String str) {
+
+        if( str == null || str.length() <= 0 ){
+            throw new IllegalArgumentException(" str is null or empty ");
+        }
+
+        if(str.isEmpty()){
+            return true;
+        }else if (str.contains(" ")) {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
 }
