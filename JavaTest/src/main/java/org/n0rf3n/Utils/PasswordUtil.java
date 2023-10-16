@@ -1,4 +1,4 @@
-package Utils;
+package org.n0rf3n.Utils;
 
 public class PasswordUtil {
 

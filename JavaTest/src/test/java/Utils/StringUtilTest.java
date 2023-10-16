@@ -2,6 +2,7 @@ package Utils;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.n0rf3n.Utils.StringUtil;
 
 public class StringUtilTest {
 

@@ -1,8 +1,9 @@
 package Utils;
 
 import org.junit.Test;
+import org.n0rf3n.Utils.PasswordUtil;
 
-import static Utils.PasswordUtil.SecurityLevel.*;
+import static org.n0rf3n.Utils.PasswordUtil.SecurityLevel.*;
 import static org.junit.Assert.assertEquals;
 
 public class PasswordUtilTest {
