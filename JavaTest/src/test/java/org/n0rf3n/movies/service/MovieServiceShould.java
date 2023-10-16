@@ -1,6 +1,7 @@
 package org.n0rf3n.movies.service;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.n0rf3n.movies.data.MovieRepository;
@@ -17,10 +18,10 @@ import static org.junit.Assert.assertTrue;
 
 public class MovieServiceShould {
 
+    private MovieService movieService;
 
-    @Test
-    public void return_movies_by_genre() {
-
+    @Before
+    public void setUp() throws Exception {
         MovieRepository mr = Mockito.mock(MovieRepository.class);//Simula la clase o repositorio.
         Mockito.when(mr.findAll()).thenReturn(
                 Arrays.asList(
@@ -33,13 +34,36 @@ public class MovieServiceShould {
                         new Movie(7, "Matrix", 136, Genre.ACTION)
                 )
         );//Mockito simula la respuesta de la clase.
-        MovieService movieService = new MovieService(mr);
+        movieService = new MovieService(mr);
+    }
+
+
+    private static List<Integer> getMoviesExtractor(Collection<Movie> movies) {
+        return movies.stream().map(Movie::getId).collect(Collectors.toList());
+    }
+
+    @Test
+    public void return_movies_by_genre() {
+
 
         Collection<Movie> movies = movieService.findMoviesByGenre(Genre.COMEDY);
 
-        List<Integer> moviesIds = movies.stream().map(Movie::getId).collect(Collectors.toList());
+        List<Integer> moviesIds = getMoviesExtractor(movies);
 
         assertThat(moviesIds, CoreMatchers.is(Arrays.asList(3,6)));
 
     }
+
+
+    @Test
+    public void return_movies_by_lenght() {
+
+        Collection<Movie> movies = movieService.findMoviesByLength(120);
+
+        List<Integer> moviesIds = getMoviesExtractor(movies);
+
+        assertThat(moviesIds, CoreMatchers.is(Arrays.asList(2,3,4,5,6)));
+
+    }
+
 }
