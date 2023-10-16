@@ -1,16 +1,15 @@
 package Utils;
 
-class StringUtilTest {
+import org.junit.Assert;
+import org.junit.Test;
 
-    public static void main(String[] args){
-        assertEquals(StringUtil.repeat("Hola", 3), "HolaHolaHola");
+public class StringUtilTest {
 
+    @Test
+    public void testRepeat(){
 
-    }
+        Assert.assertEquals("HolaHolaHola", StringUtil.repeat("Hola", 3));
+        Assert.assertEquals("Hola", StringUtil.repeat("Hola", 1));
 
-    private static void assertEquals(String actual, String expected) {
-        if (!actual.equals(expected)){
-            throw new RuntimeException(actual + " is not equal to "+expected);
-        }
     }
 }
